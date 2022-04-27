@@ -1,6 +1,7 @@
 package edu.packt.neuralnet;
 
 import edu.packt.neuralnet.math.IActivationFunction;
+import edu.packt.neuralnet.math.RandomNumberGenerator;
 
 import java.util.ArrayList;
 
@@ -16,6 +17,11 @@ public class Neuron {
     public Neuron() {
     }
 
+    public Neuron(int numberofinputs){
+        numberOfInputs = numberofinputs;
+        weight = new ArrayList<>(numberofinputs + 1);
+        input = new ArrayList<>(numberofinputs);
+    }
     public Neuron(int numberofinputs, IActivationFunction iaf) {
         numberOfInputs      = numberofinputs;
         weight              = new ArrayList<>(numberofinputs + 1);

@@ -1,11 +1,13 @@
 package edu.packt.neuralnet;
 
+import edu.packt.neuralnet.math.Linear;
+
 import java.util.ArrayList;
 
 public class InputLayer extends NeuralLayer{
 
     public InputLayer(int numberOfInputs){
-        super(numberofinputs, new Linear(1));
+        super(numberOfInputs, new Linear(1));
         this.numberOfInputs = numberOfInputs;
         previousLayer = null;
         init();
