@@ -16,18 +16,19 @@ public class NeuralNetConsoleTest {
         System.out.println("Создание нейронной сети...");
         NeuralNet nn = new NeuralNet(numberOfInputs, numberOfOutputs, numberOfHiddenNeurons, hiddenAcFnc, outputAcFnc);
         System.out.println("Нейронная сеть создана!");
-        double [] neuralInput = { 1.5 , 0.5 };
 
+        double [] neuralInput = { 1.5 , 0.5 };
         double [] neuralOutput;
+
         nn.setInputs(neuralInput);
         nn.calc();
-        neuralOutput=nn.getOutputs();
+        neuralOutput = nn.getOutputs();
 
         neuralInput[0] = 1.0;
         neuralInput[1] = 2.1;
 
         nn.setInputs(neuralInput);
         nn.calc();
-        neuralOutput=nn.getOutputs();
+        neuralOutput = nn.getOutputs();
     }
 }

@@ -74,7 +74,7 @@ public class NeuralNet {
 
     public void setInputs(double[] inputs){
         if(inputs.length == numberOfInputs){
-            for(int i = 0; i< numberOfInputs; i++){
+            for(int i = 0; i < numberOfInputs; i++){
                 try{
                     input.set(i, inputs[i]);
                 }
