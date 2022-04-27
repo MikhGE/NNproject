@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public abstract class NeuralLayer {
     protected   int                 numberOfNeuronsInLayer;
     private     ArrayList<Neuron>   neuron;
-    protected IActivationFunction activationFnc;
+    protected   IActivationFunction activationFnc;
     protected   NeuralLayer         previousLayer;
     protected   NeuralLayer         nextLayer;
     protected   ArrayList<Double>   input;
