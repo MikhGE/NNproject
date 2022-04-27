@@ -3,9 +3,22 @@ package edu.packt.neuralnet;
 import edu.packt.neuralnet.math.IActivationFunction;
 
 public class OutputLayer extends NeuralLayer {
-    public OutputLayer(int numberOfNeurons, IActivationFunction iaf, int numberOfInputs){
-        this.numberOfNeuronsInLayer = numberOfNeurons;
-        this.activationFnc          = iaf;
-        this.numberOfInputs         = numberOfInputs;
+    public OutputLayer(int numberofneurons, IActivationFunction iaf, int numberofinputs){
+        super(numberofneurons, iaf);
+        numberOfInputs = numberofinputs;
+        nextLayer = null;
+        init();
+    }
+
+    @Override
+    public void setNextLayer(NeuralLayer layer){
+        nextLayer = null;
+    }
+
+    @Override
+    public void setPreviousLayer(NeuralLayer layer){
+        previousLayer = layer;
+        if(layer.nextLayer != this)
+            layer.setNextLayer(this);
     }
 }

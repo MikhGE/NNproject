@@ -3,9 +3,25 @@ package edu.packt.neuralnet;
 import edu.packt.neuralnet.math.IActivationFunction;
 
 public class HiddenLayer extends NeuralLayer{
-    public HiddenLayer(int numberOfNeurons, IActivationFunction iaf, int numberOfInputs){
-        this.numberOfNeuronsInLayer = numberOfNeurons;
-        this.activationFnc          = iaf;
-        this.numberOfInputs         = numberOfInputs;
+
+    public HiddenLayer(int numberofneurons, IActivationFunction iaf,
+                       int numberofinputs){
+        super(numberofneurons,iaf);
+        numberOfInputs=numberofinputs;
+        init();
+    }
+
+    @Override
+    public void setPreviousLayer(NeuralLayer previous){
+        this.previousLayer = previous;
+        if(previous.nextLayer != this)
+            previous.setNextLayer(this);
+    }
+
+    @Override
+    public void setNextLayer(NeuralLayer next){
+        nextLayer = next;
+        if(next.previousLayer != this)
+            next.setPreviousLayer(this);
     }
 }

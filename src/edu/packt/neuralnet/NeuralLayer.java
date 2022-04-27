@@ -14,6 +14,65 @@ public abstract class NeuralLayer {
     protected   ArrayList<Double>   output;
     protected   int                 numberOfInputs;
 
+    public NeuralLayer(int numberofneurons){
+        this.numberOfNeuronsInLayer = numberofneurons;
+        neuron = new ArrayList<>(numberofneurons);
+        output = new ArrayList<>(numberofneurons);
+    }
+
+    public NeuralLayer(int numberofneurons,IActivationFunction iaf){
+        this.numberOfNeuronsInLayer=numberofneurons;
+        this.activationFnc=iaf;
+        neuron = new ArrayList<>(numberofneurons);
+        output = new ArrayList<>(numberofneurons);
+    }
+
+    public int getNumberOfNeuronsInLayer(){
+        return numberOfNeuronsInLayer;
+    }
+
+    public ArrayList<Neuron> getListOfNeurons(){
+        return neuron;
+    }
+
+    protected NeuralLayer getPreviousLayer(){
+        return previousLayer;
+    }
+
+    protected NeuralLayer getNextLayer(){
+        return nextLayer;
+    }
+
+    protected void setPreviousLayer(NeuralLayer layer){
+        previousLayer=layer;
+    }
+
+    protected void setNextLayer(NeuralLayer layer){
+        nextLayer=layer;
+    }
+
+    protected ArrayList<Double> getOutputs(){
+        return output;
+    }
+
+    protected Neuron getNeuron(int i){
+        return neuron.get(i);
+    }
+
+    protected void setInputs(ArrayList<Double> inputs){
+        this.numberOfInputs=inputs.size();
+        this.input=inputs;
+    }
+
+    protected void setNeuron(int i, Neuron _neuron){
+        try{
+            this.neuron.set(i, _neuron);
+        }
+        catch(IndexOutOfBoundsException iobe){
+            this.neuron.add(_neuron);
+        }
+    }
+
     protected void init() {
         for (int i = 0; i < numberOfNeuronsInLayer; i++) {
             try {
