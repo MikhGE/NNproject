@@ -1,5 +1,7 @@
 package edu.packt.neuralnet;
 
+import edu.packt.neuralnet.math.IActivationFunction;
+
 import java.util.ArrayList;
 
 public class Neuron {
@@ -9,7 +11,7 @@ public class Neuron {
     private     Double              outputBeforeActivation;
     private     int                 numberOfInputs = 0;
     protected   Double              bias = 1.0;
-    private     IActivationFunction activationFunction;
+    private IActivationFunction activationFunction;
 
     public Neuron(int numberofinputs, IActivationFunction iaf) {
         numberOfInputs      = numberofinputs;
