@@ -65,4 +65,50 @@ public class NeuralNet {
         }
 
     }
+
+    public void setInputs(ArrayList<Double> inputs){
+        if(inputs.size() == numberOfInputs){
+            this.input = inputs;
+        }
+    }
+
+    public void setInputs(double[] inputs){
+        if(inputs.length == numberOfInputs){
+            for(int i = 0; i< numberOfInputs; i++){
+                try{
+                    input.set(i, inputs[i]);
+                }
+                catch(IndexOutOfBoundsException iobe){
+                    input.add(inputs[i]);
+                }
+            }
+        }
+    }
+
+    public void calc(){
+        inputLayer.setInputs(input);
+        inputLayer.calc();
+        if(numberOfHiddenLayers > 0){
+            for(int i = 0; i < numberOfHiddenLayers; i++){
+                HiddenLayer hl = hiddenLayer.get(i);
+                hl.setInputs(hl.getPreviousLayer().getOutputs());
+                hl.calc();
+            }
+        }
+        outputLayer.setInputs(outputLayer.getPreviousLayer().getOutputs());
+        outputLayer.calc();
+        this.output = outputLayer.getOutputs();
+    }
+
+    public ArrayList<Double> getArrayOutputs(){
+        return output;
+    }
+
+    public double[] getOutputs(){
+        double[] _outputs = new double[numberOfOutputs];
+        for(int i = 0; i<numberOfOutputs; i++){
+            _outputs[i] = output.get(i);
+        }
+        return _outputs;
+    }
 }
