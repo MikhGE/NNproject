@@ -19,16 +19,20 @@ public class NeuralNetConsoleTest {
 
         double [] neuralInput = { 1.5 , 0.5 };
         double [] neuralOutput;
+        System.out.println("Переданы значения [" + String.valueOf(neuralInput[0]) + " ; " + String.valueOf(neuralInput[1]) + "] в нейронную сеть");
 
         nn.setInputs(neuralInput);
         nn.calc();
         neuralOutput = nn.getOutputs();
+        System.out.println("Сформирован ответ: " + String.valueOf(neuralOutput[0]));
 
         neuralInput[0] = 1.0;
         neuralInput[1] = 2.1;
+        System.out.println("Переданы значения [" + String.valueOf(neuralInput[0]) + " ; " + String.valueOf(neuralInput[1]) + "] в нейронную сеть");
 
         nn.setInputs(neuralInput);
         nn.calc();
         neuralOutput = nn.getOutputs();
+        System.out.println("Сформирован ответ: " + String.valueOf(neuralOutput[0]));
     }
 }
